@@ -1,0 +1,74 @@
+<div class="form-wrapper">
+  <div class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Введите вашу почту</mat-label>
+      <input
+        matInput
+        placeholder="user@mail.ru"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Введите ваш пароль</mat-label>
+      <input
+        matInput
+        placeholder="jCxN2T84f$M2"
+        [type]="hide ? 'password' : 'text'"
+        [formControl]="password"
+        minlength="6"
+        required
+      />
+      <mat-error *ngIf="password.invalid">{{
+        getPasswordErrorMessage()
+      }}</mat-error>
+
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div
+      *ngIf="
+        router.url === '/registration';
+        then registrationBlock;
+        else loginBlock
+      "
+    ></div>
+
+    <ng-template #registrationBlock>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="signup()"
+        class="auth-btn"
+      >
+        Зарегистрироваться
+      </button>
+
+      <a mat-button routerLink="/login">Есть аккаунт?</a>
+    </ng-template>
+
+    <ng-template #loginBlock>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="login()"
+        class="auth-btn"
+      >
+        Войти
+      </button>
+
+      <a mat-button routerLink="/registration">Нету аккаунта?</a>
+    </ng-template>
+  </div>
+</div>

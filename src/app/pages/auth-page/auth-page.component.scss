@@ -1,0 +1,39 @@
+.form-wrapper {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-container {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+mat-form-field {
+  width: 100%;
+  font-weight: bold;
+}
+
+.auth-btn {
+  width: 100%;
+  font-size: 19px;
+  font-weight: bold;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+mat-error {
+  margin-top: 0.25rem;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}

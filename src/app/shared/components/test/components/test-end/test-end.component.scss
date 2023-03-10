@@ -1,0 +1,37 @@
+:host {
+  height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-container {
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+.mark-5 {
+  color: #69f0ae;
+}
+
+.mark-4 {
+  color: #3f51b5;
+}
+
+.mark-3 {
+  color: #f44336;
+}
+
+.mark-2 {
+  color: #f44336;
+}

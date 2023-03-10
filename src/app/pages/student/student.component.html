@@ -1,0 +1,19 @@
+<mat-stepper linear>
+  <mat-step>
+    <app-student-test-code
+      (getTestEvent)="getTest()"
+      [testId]="testId"
+    ></app-student-test-code>
+  </mat-step>
+
+  <mat-step>
+    <app-student-test-auth
+      (registrateStudentEvent)="registrateStudent()"
+      [studentName]="studentName"
+    ></app-student-test-auth>
+  </mat-step>
+
+  <mat-step *ngIf="test">
+    <app-student-test [test]="test"></app-student-test>
+  </mat-step>
+</mat-stepper>

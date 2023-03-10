@@ -1,0 +1,27 @@
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+  margin: auto;
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+mat-tab-nav-panel {
+  display: flex;
+  max-width: 1024px;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+mat-icon {
+  font-weight: 700;
+}
+
+h3 {
+  user-select: none;
+}

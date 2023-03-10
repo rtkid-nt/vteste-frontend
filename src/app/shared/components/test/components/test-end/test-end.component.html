@@ -1,0 +1,24 @@
+<div class="results-container">
+  <h2>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ correctAnswerCount }} /
+    {{ questionsCount }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </h2>
+
+  <mat-progress-bar
+    color="primary"
+    mode="determinate"
+    [value]="(correctAnswerCount / questionsCount) * 100"
+  >
+  </mat-progress-bar>
+
+  <h1
+    [ngClass]="{
+      'mark-5': mark === 5,
+      'mark-4': mark === 4,
+      'mark-3': mark === 3,
+      'mark-2': mark === 2
+    }"
+  >
+    {{ mark }}
+  </h1>
+</div>

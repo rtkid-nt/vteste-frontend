@@ -1,0 +1,27 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let test of tests; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ test.name }} </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="test-info-wrapper">
+      <p>Количество вопросов: {{ test.questions.length }}</p>
+      <p>Время выполнения: {{ test.time }} минут</p>
+
+      <div class="button-wrapper">
+        <div>
+          <button (click)="goToEditPage(test)" mat-raised-button color="primary">
+            Редактировать
+          </button>
+          <button (click)="deleteTest(i)" mat-raised-button color="warn">
+            Удалить
+          </button>
+        </div>
+
+        <button mat-raised-button color="accent">Начать</button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<app-create-button (click)="createTest()" />
