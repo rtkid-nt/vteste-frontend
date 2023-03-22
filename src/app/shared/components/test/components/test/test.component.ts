@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
 import { ITest } from 'src/app/shared/models/test';
 
 @Component({
@@ -10,6 +17,8 @@ export class TestComponent {
   @Input() test!: ITest;
   @Output() questionCompletedEvent: EventEmitter<number> =
     new EventEmitter<number>();
+
+  @ViewChild(MatStepper) stepper!: MatStepper;
 
   isTestRunning: boolean = false;
   currentQuestionIndex: number = 0;
@@ -31,6 +40,20 @@ export class TestComponent {
 
     this.currentQuestionIndex++;
     this.questionCompletedEvent.emit(answerIndex);
+  }
+
+  stopTest(): void {
+    console.log(this.currentQuestionIndex);
+
+    for (
+      let i = this.currentQuestionIndex;
+      i < this.test.questions.length;
+      i++
+    ) {
+      this.stepper.next();
+    }
+
+    this.isTestRunning = false;
   }
 
   getMark(): number {

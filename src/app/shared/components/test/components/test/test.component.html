@@ -5,6 +5,7 @@
       [time]="test.time"
       [questionsCount]="test.questions.length"
       [currentQuestionNumber]="currentQuestionIndex + 1"
+      (timeEndEvent)="stopTest()"
     ></app-test-title>
 
     <mat-stepper linear>

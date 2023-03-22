@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITest } from 'src/app/shared/models/test';
 
 @Component({
@@ -10,6 +10,8 @@ export class TestTitleComponent {
   @Input() questionsCount!: number;
   @Input() time!: string;
   @Input() currentQuestionNumber!: number;
+
+  @Output() timeEndEvent: EventEmitter<void> = new EventEmitter<void>();
 
   timeLeftSeconds: number = 0;
   timerInterval: any;
@@ -27,6 +29,7 @@ export class TestTitleComponent {
     this.timerInterval = setInterval(() => {
       if (this.timeLeftSeconds > 0) this.timeLeftSeconds--;
       else this.timeLeftSeconds = 0;
+      if (this.timeLeftSeconds <= 0) this.timeEndEvent.emit();
     }, 1000);
   }
 
