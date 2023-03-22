@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-content>
+    <app-test-title
+      *ngIf="isTestRunning"
+      [time]="test.time"
+      [questionsCount]="test.questions.length"
+      [currentQuestionNumber]="currentQuestionIndex + 1"
+    ></app-test-title>
+
+    <mat-stepper linear>
+      <mat-step>
+        <app-test-start
+          [name]="test.name"
+          [description]="test.description"
+          (testStartedEvent)="startTest()"
+        ></app-test-start>
+      </mat-step>
+
+      <mat-step *ngFor="let question of test.questions; let i = index">
+        <app-test-question
+          [question]="question"
+          (questionCompletedEvent)="nextQuestion($event)"
+        ></app-test-question>
+      </mat-step>
+
+      <mat-step>
+        <app-test-end
+          [mark]="getMark()"
+          [correctAnswerCount]="correctAnswerCount"
+          [questionsCount]="test.questions.length"
+        ></app-test-end>
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>

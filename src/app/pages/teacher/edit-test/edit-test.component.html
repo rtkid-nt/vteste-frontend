@@ -1,0 +1,40 @@
+<div *ngIf="editTest">
+  <mat-stepper linear>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel>Основное</ng-template>
+
+      <app-edit-test-main [test]="editTest" (completedEvent)="nextStep()">
+      </app-edit-test-main>
+    </mat-step>
+
+    <mat-step [completed]="false">
+      <ng-template matStepLabel>Вопросы</ng-template>
+
+      <app-edit-test-questions
+        [questions]="editTest.questions"
+        (completedEvent)="nextStep()"
+      ></app-edit-test-questions>
+    </mat-step>
+
+    <mat-step [completed]="false">
+      <ng-template matStepLabel>Результаты</ng-template>
+
+      <app-edit-test-results
+        [test]="editTest"
+        (completedEvent)="nextStep()"
+        (updatePreview)="updatePreview()"
+      ></app-edit-test-results>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Предпросмотр</ng-template>
+
+      <app-edit-test-preview
+        [editTest]="editTest"
+        (saveTestEvent)="saveTest()"
+      ></app-edit-test-preview>
+    </mat-step>
+  </mat-stepper>
+</div>
+
+<div *ngIf="!editTest">404</div>

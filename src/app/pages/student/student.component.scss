@@ -1,0 +1,24 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+mat-stepper {
+  width: 100%;
+}
+
+app-test {
+  margin-top: 1rem;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+
+::ng-deep div.mat-horizontal-content-container {
+  padding: 0;
+}

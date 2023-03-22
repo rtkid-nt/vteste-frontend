@@ -1,0 +1,16 @@
+<div class="title-container">
+  <h3>{{ question.name }}</h3>
+  <p>{{ question.description | lowercase }}</p>
+</div>
+
+<div class="answers-container">
+  <button
+    *ngFor="let answer of question.answers; let i = index"
+    class="next-btn"
+    mat-stroked-button
+    matStepperNext
+    (click)="nextQeustion(i)"
+  >
+    {{ answer.text }}
+  </button>
+</div>

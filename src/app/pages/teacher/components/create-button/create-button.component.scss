@@ -1,0 +1,17 @@
+.create-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.create-btn.mat-mdc-raised-button:not(:disabled) {
+  background-color: rgba(0, 255, 0, 0.4);
+  color: rgb(0, 255, 0);
+}
+
+mat-icon {
+  scale: 2;
+}

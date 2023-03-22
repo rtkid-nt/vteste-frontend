@@ -1,0 +1,72 @@
+<div class="container">
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div
+      *ngFor="let question of questions; let i = index"
+      (click)="selectQuestion(question)"
+      class="example-box"
+      cdkDrag
+    >
+      <div class="btn-container">
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <h3>Вопрос: #{{ i + 1 }}</h3>
+
+        <div>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon button with a menu icon"
+            (click)="deteleQuestion(i)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Example icon button with a menu icon"
+            (click)="copyQuestion(question)"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="basic"
+            aria-label="Example icon button with a menu icon"
+            cdkDragHandle
+          >
+            <mat-icon>drag_indicator</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <p>{{ question.name.value }}</p>
+      </div>
+    </div>
+
+    <app-create-button (click)="addQuestion()"></app-create-button>
+  </div>
+
+  <app-edit-question-info
+    *ngIf="selectedQuestion"
+    [question]="selectedQuestion"
+  >
+  </app-edit-question-info>
+</div>
+
+<div class="button-container">
+  <button class="next-btn" mat-raised-button color="warn" matStepperPrevious>
+    Назад
+  </button>
+  <button
+    (click)="nextStep()"
+    [disabled]="isInvalid()"
+    class="next-btn"
+    mat-raised-button
+    color="primary"
+    matStepperNext
+  >
+    Дальше
+  </button>
+</div>

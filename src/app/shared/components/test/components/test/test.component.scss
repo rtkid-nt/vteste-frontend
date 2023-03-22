@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  height: 100%;
+  max-height: 700px;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+
+::ng-deep div.mat-horizontal-content-container {
+  padding: 0;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

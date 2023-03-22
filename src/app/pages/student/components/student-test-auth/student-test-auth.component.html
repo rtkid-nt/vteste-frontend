@@ -1,0 +1,15 @@
+<mat-form-field class="answer-form" appearance="outline">
+  <input matInput placeholder="Имя" [formControl]="studentName" required />
+</mat-form-field>
+
+<div class="button-container">
+  <button
+    (click)="registrateStudent()"
+    class="next-btn"
+    mat-raised-button
+    color="primary"
+    [disabled]="studentName.invalid"
+  >
+    Начать
+  </button>
+</div>

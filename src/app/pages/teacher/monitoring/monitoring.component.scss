@@ -1,0 +1,116 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+mat-accordion {
+  user-select: none;
+}
+
+mat-panel-title {
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+mat-expansion-panel + mat-expansion-panel {
+  margin-top: 1rem;
+}
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.test-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > div {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+button {
+  font-weight: bold;
+  font-size: 1rem;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.mat-mdc-raised-button > .mat-icon {
+  width: auto;
+  height: auto;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.student-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+.answers-count {
+  display: flex;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.grey {
+  color: grey;
+}
+
+.top {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.green-bg {
+  background-color: rgba(0, 255, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+.red-bg {
+  background-color: rgba(255, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 2;
+}
+
+h3 {
+  user-select: all;
+}

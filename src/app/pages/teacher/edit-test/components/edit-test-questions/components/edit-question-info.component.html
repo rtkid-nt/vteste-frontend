@@ -1,0 +1,86 @@
+<mat-card class="container-info">
+  <mat-card-content>
+    <div class="form-field-container">
+      <mat-label>Название вопроса</mat-label>
+
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          placeholder="Название"
+          [formControl]="question.name"
+          required
+        />
+
+        <mat-error *ngIf="question.name.invalid">
+          {{ getTitleErrorMessage() }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-container">
+      <mat-label>Описание вопроса</mat-label>
+
+      <mat-form-field appearance="outline">
+        <textarea
+          matInput
+          placeholder="Описание вопроса"
+          [(ngModel)]="question.description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-container">
+      <mat-label>Варианты ответов</mat-label>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div
+          *ngFor="let answer of question.answers; let i = index"
+          class="answer-container"
+          cdkDrag
+        >
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
+          <mat-form-field class="answer-form" appearance="outline">
+            <input
+              matInput
+              placeholder="Ответ"
+              [formControl]="answer.text"
+              required
+            />
+
+            <mat-error *ngIf="answer.text.invalid">
+              {{ getAnswerTextError(answer) }}
+            </mat-error>
+          </mat-form-field>
+
+          <div class="answer-btn-container">
+            <mat-checkbox
+              color="primary"
+              [formControl]="answer.isValid"
+            ></mat-checkbox>
+
+            <button
+              mat-icon-button
+              color="warn"
+              aria-label="Example icon button with a menu icon"
+              (click)="deleteAnswer(i)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              color="basic"
+              aria-label="Example icon button with a menu icon"
+              cdkDragHandle
+            >
+              <mat-icon>drag_indicator</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <app-create-button (click)="addAnswer()"></app-create-button>
+    </div>
+  </mat-card-content>
+</mat-card>

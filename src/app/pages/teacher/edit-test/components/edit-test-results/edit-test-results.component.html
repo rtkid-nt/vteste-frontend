@@ -1,0 +1,60 @@
+<h3>Оценки</h3>
+
+<div class="container">
+  <div class="slider-container">
+    <h3>5:</h3>
+    <mat-slider
+      color="accent"
+      min="1"
+      [max]="test.questions.length"
+      step="1"
+      showTickMarks
+      discrete
+    >
+      <input matSliderThumb [(ngModel)]="test.correctAnswersCountMark_5" />
+    </mat-slider>
+  </div>
+
+  <div class="slider-container">
+    <h3>4:</h3>
+    <mat-slider
+      color="primary"
+      min="1"
+      [max]="test.questions.length"
+      step="1"
+      showTickMarks
+      discrete
+    >
+      <input matSliderThumb [(ngModel)]="test.correctAnswersCountMark_4" />
+    </mat-slider>
+  </div>
+
+  <div class="slider-container">
+    <h3>3:</h3>
+    <mat-slider
+      color="warn"
+      min="1"
+      [max]="test.questions.length"
+      step="1"
+      showTickMarks
+      discrete
+    >
+      <input matSliderThumb [(ngModel)]="test.correctAnswersCountMark_3" />
+    </mat-slider>
+  </div>
+</div>
+
+<div class="button-container">
+  <button class="next-btn" mat-raised-button color="warn" matStepperPrevious>
+    Назад
+  </button>
+  <button
+    (click)="nextStep()"
+    class="next-btn"
+    mat-raised-button
+    color="primary"
+    matStepperNext
+  >
+    Дальше
+  </button>
+</div>

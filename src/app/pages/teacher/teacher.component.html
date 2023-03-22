@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <h3>VTeste</h3>
+
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      (click)="activeLink = link"
+      [active]="activeLink == link"
+      [routerLink]="link.path"
+    >
+      {{ link.name }}
+    </a>
+  </nav>
+
+  <button mat-icon-button (click)="logout()" color="primary">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

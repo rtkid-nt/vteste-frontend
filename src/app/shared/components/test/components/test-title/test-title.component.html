@@ -1,0 +1,15 @@
+<div class="timer-container">
+  <h3>Таймер: {{ getTime() }}</h3>
+</div>
+
+<div class="progress-bar-container">
+  <p>
+    Вопрос:&nbsp;{{ currentQuestionNumber }}&nbsp;из&nbsp;{{ questionsCount }}
+  </p>
+  <mat-progress-bar
+    color="primary"
+    mode="determinate"
+    [value]="(currentQuestionNumber / questionsCount) * 100"
+  >
+  </mat-progress-bar>
+</div>

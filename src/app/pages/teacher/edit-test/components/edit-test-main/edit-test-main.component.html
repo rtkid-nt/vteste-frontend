@@ -1,0 +1,71 @@
+<button (click)="imageInput.click()" class="input-uploader">
+  <input
+    #imageInput
+    type="file"
+    accept="image/*"
+    class="load-image-input"
+    (change)="onSelectFile(imageInput)"
+  />
+
+  <img class="image" [src]="selectedFile.src" *ngIf="selectedFile" />
+
+  <div *ngIf="!selectedFile" class="info-container">
+    <mat-icon color="primary">photo_camera</mat-icon>
+    <p>Выберите изображение</p>
+  </div>
+
+  <div
+    (click)="onRemoveFile($event)"
+    *ngIf="selectedFile"
+    class="absolute-container"
+  >
+    <mat-icon class="remove-image" color="warn">delete</mat-icon>
+  </div>
+</button>
+
+<div class="test-name-container form-field-container">
+  <mat-label>Название теста</mat-label>
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Название" [formControl]="test.name" required />
+    <mat-error *ngIf="test.name.invalid">{{ getNameErrorMessage() }}</mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-field-container">
+  <mat-label>Описание теста</mat-label>
+
+  <mat-form-field appearance="outline">
+    <textarea
+      matInput
+      placeholder="Описание теста"
+      [(ngModel)]="test.description"
+    ></textarea>
+  </mat-form-field>
+</div>
+
+<div class="form-field-container">
+  <mat-label>Время на выполнение теста</mat-label>
+
+  <mat-form-field appearance="outline">
+    <input
+      matInput
+      placeholder="Время в минутах"
+      pattern="^[1-9][0-9]?$|^100$"
+      [formControl]="test.time"
+      required
+    />
+    <mat-error *ngIf="test.time.invalid">{{ getTimeErrorMessage() }}</mat-error>
+  </mat-form-field>
+</div>
+
+<button
+  class="next-btn"
+  mat-raised-button
+  color="primary"
+  matStepperNext
+  (click)="nextStep()"
+  [disabled]="isInvalid()"
+>
+  Дальше
+</button>
