@@ -11,13 +11,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class AuthPageComponent implements OnInit {
   constructor(public router: Router, private user: UserService) {}
 
-  ngOnInit(): void {
-    const response$ = this.user.auth();
+  async ngOnInit(): Promise<void> {
+    const response = await this.user.auth();
 
-    if (response$)
-      response$.subscribe(() => {
-        this.router.navigate(['teacher']);
-      });
+    if (response) this.router.navigate(['teacher']);
   }
 
   email: FormControl<string | null> = new FormControl('', [
@@ -42,18 +39,18 @@ export class AuthPageComponent implements OnInit {
     return this.password.hasError('minlength') ? 'Минимальная длина - 6' : '';
   }
 
-  signup(): void {
+  async signup(): Promise<void> {
     if (this.isFormInCorrect()) return;
 
-    this.user.register(this.email.value!, this.password.value!);
+    await this.user.register(this.email.value!, this.password.value!);
 
     this.router.navigate(['teacher']);
   }
 
-  login(): void {
+  async login(): Promise<void> {
     if (this.isFormInCorrect()) return;
 
-    this.user.login(this.email.value!, this.password.value!);
+    await this.user.login(this.email.value!, this.password.value!);
 
     this.router.navigate(['teacher']);
   }

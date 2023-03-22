@@ -14,38 +14,42 @@ export class UserService {
   private user?: IUser;
   private isAuth: boolean = false;
 
-  public register(email: string, password: string): Observable<IAuthResponse> {
-    const response$ = this.apiService.register(email, password);
-    this.isAuth = true;
+  public async register(
+    email: string,
+    password: string
+  ): Promise<IAuthResponse | undefined> {
+    const response = await this.apiService.register(email, password);
 
-    response$.subscribe((res: IAuthResponse) => {
-      this.user = res.user;
-    });
+    if (response) {
+      this.isAuth = true;
+      this.user = response.user;
+    }
 
-    return response$;
+    return response;
   }
 
-  public login(email: string, password: string): Observable<IAuthResponse> {
-    const response$ = this.apiService.login(email, password);
-    this.isAuth = true;
+  public async login(
+    email: string,
+    password: string
+  ): Promise<IAuthResponse | undefined> {
+    const response = await this.apiService.login(email, password);
 
-    response$.subscribe((res: IAuthResponse) => {
-      this.user = res.user;
-    });
+    if (response) {
+      this.isAuth = true;
+      this.user = response.user;
+    }
 
-    return response$;
+    return response;
   }
 
-  public auth(): Observable<IAuthResponse> | null {
-    const response$ = this.apiService.auth();
-    if (!response$) return null;
+  public async auth(): Promise<IAuthResponse | null | undefined> {
+    const response = await this.apiService.auth();
+    if (!response) return null;
+
     this.isAuth = true;
+    this.user = response.user;
 
-    response$.subscribe((res: IAuthResponse) => {
-      this.user = res.user;
-    });
-
-    return response$;
+    return response;
   }
 
   public isAuthed(): boolean {

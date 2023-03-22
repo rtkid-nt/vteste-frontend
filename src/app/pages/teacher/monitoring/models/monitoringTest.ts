@@ -1,7 +1,12 @@
+interface IStudent {
+  name: string;
+  answers: boolean[];
+}
+
 export interface IMonitoringTest {
   testId: string;
   testCode: string;
   testName: string;
-  students?: [{ name: string; answers: boolean[] }];
+  students?: IStudent[];
   countQuestions: number;
 }

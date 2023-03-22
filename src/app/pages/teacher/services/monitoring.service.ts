@@ -22,9 +22,11 @@ export class MonitoringService {
     this.socket
       .fromEvent<IRegisterStudent>('registerStudentToClient')
       .subscribe((registerStudent: IRegisterStudent) => {
-        const monitoringTest = this.monitoringTests.find(
-          (t) => t.testCode === registerStudent.testCode
-        );
+        const monitoringTest = this.monitoringTests.find((t) => {
+          console.log(registerStudent.testCode === t.testCode);
+
+          return t.testCode === registerStudent.testCode;
+        });
 
         monitoringTest?.students?.push({
           name: registerStudent.studentName,

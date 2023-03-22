@@ -1,28 +1,3 @@
-<button (click)="imageInput.click()" class="input-uploader">
-  <input
-    #imageInput
-    type="file"
-    accept="image/*"
-    class="load-image-input"
-    (change)="onSelectFile(imageInput)"
-  />
-
-  <img class="image" [src]="selectedFile.src" *ngIf="selectedFile" />
-
-  <div *ngIf="!selectedFile" class="info-container">
-    <mat-icon color="primary">photo_camera</mat-icon>
-    <p>Выберите изображение</p>
-  </div>
-
-  <div
-    (click)="onRemoveFile($event)"
-    *ngIf="selectedFile"
-    class="absolute-container"
-  >
-    <mat-icon class="remove-image" color="warn">delete</mat-icon>
-  </div>
-</button>
-
 <div class="test-name-container form-field-container">
   <mat-label>Название теста</mat-label>
 

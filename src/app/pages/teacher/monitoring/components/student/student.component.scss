@@ -1,0 +1,54 @@
+:host {
+  width: 100%;
+}
+
+.answers-count {
+  display: flex;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.grey {
+  color: grey;
+}
+
+.top {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.green-bg {
+  background-color: rgba(0, 255, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+.red-bg {
+  background-color: rgba(255, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+.inner-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 2;
+}
+
+h3 {
+  user-select: all;
+}

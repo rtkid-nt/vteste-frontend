@@ -11,41 +11,11 @@
 
     <div class="test-info-wrapper">
       <div *ngFor="let student of test.students" class="student-item">
-        <div class="top">
-          <div
-            class="green-bg"
-            [style.width]="
-              (getCountCorrectAnswers(student.answers) / test.countQuestions) *
-              100
-            "
-          ></div>
-          <div
-            class="red-bg"
-            [style.width]="
-              (getCountBadAnswers(student.answers) / test.countQuestions) * 100
-            "
-          ></div>
-        </div>
-
-        <div class="inner-container">
-          <h3>{{ student.name }}</h3>
-
-          <div class="answers-count">
-            <h3 class="green">
-              {{ getCountCorrectAnswers(student.answers) }}
-            </h3>
-            <h3>&nbsp;/&nbsp;</h3>
-            <h3 class="red">{{ getCountBadAnswers(student.answers) }}</h3>
-            <h3>&nbsp;/&nbsp;</h3>
-            <h3 class="grey">
-              {{
-                test.countQuestions -
-                  (getCountCorrectAnswers(student.answers) +
-                    getCountBadAnswers(student.answers))
-              }}
-            </h3>
-          </div>
-        </div>
+        <app-student
+          [answers]="student.answers"
+          [questionsCount]="test.countQuestions"
+          [name]="student.name"
+        ></app-student>
       </div>
 
       <h3>{{ test.testCode }}</h3>

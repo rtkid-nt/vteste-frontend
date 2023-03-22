@@ -19,6 +19,7 @@ import { EditTestPreviewComponent } from './edit-test/components/edit-test-previ
 import { EditTestQuestionsComponent } from './edit-test/components/edit-test-questions/edit-test-questions.component';
 import { EditQuestionInfoComponent } from './edit-test/components/edit-test-questions/components/edit-question-info.component';
 import { EditTestResultsComponent } from './edit-test/components/edit-test-results/edit-test-results.component';
+import { StudentComponent } from './monitoring/components/student/student.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditTestResultsComponent } from './edit-test/components/edit-test-resul
     MonitoringComponent,
     TestsComponent,
     TeacherComponent,
+    StudentComponent,
   ],
   imports: [
     CommonModule,

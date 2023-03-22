@@ -17,22 +17,4 @@ export class MonitoringComponent implements OnInit {
   }
 
   monitoringTests?: IMonitoringTest[];
-
-  getCountCorrectAnswers(answers: boolean[]): number {
-    let count = 0;
-    answers.forEach((a) => {
-      if (a) count++;
-    });
-
-    return count;
-  }
-
-  getCountBadAnswers(answers: boolean[]): number {
-    let count = 0;
-    answers.forEach((a) => {
-      if (!a) count++;
-    });
-
-    return count;
-  }
 }

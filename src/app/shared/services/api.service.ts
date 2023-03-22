@@ -25,56 +25,56 @@ export class ApiService {
     );
   }
 
-  public register(email: string, password: string): Observable<IAuthResponse> {
-    const response$ = this.http.post<IAuthResponse>(
-      this.apiUrl + 'auth/register',
-      {
+  public async register(
+    email: string,
+    password: string
+  ): Promise<IAuthResponse | undefined> {
+    const response = await this.http
+      .post<IAuthResponse>(this.apiUrl + 'auth/register', {
         email,
         password,
-      }
-    );
+      })
+      .toPromise();
 
-    response$.subscribe((res) => {
-      this.setToken(res.token);
-    });
+    if (response) this.setToken(response.token);
 
-    return response$;
+    return response;
   }
 
-  public login(email: string, password: string): Observable<IAuthResponse> {
-    const response$ = this.http.post<IAuthResponse>(
-      this.apiUrl + 'auth/login',
-      {
+  public async login(
+    email: string,
+    password: string
+  ): Promise<IAuthResponse | undefined> {
+    const response = await this.http
+      .post<IAuthResponse>(this.apiUrl + 'auth/login', {
         email,
         password,
-      }
-    );
+      })
+      .toPromise();
 
-    response$.subscribe((res) => {
-      this.setToken(res.token);
-    });
+    if (response) this.setToken(response.token);
 
-    return response$;
+    return response;
   }
 
-  public auth(): Observable<IAuthResponse> | null {
+  public async auth(): Promise<IAuthResponse | null | undefined> {
     if (!this.token) return null;
     this.httpHeaders = this.httpHeaders.set(
       'Authorization',
       'Bearer ' + this.token
     );
 
-    const response$ = this.http.post<IAuthResponse>(
-      this.apiUrl + 'auth',
-      {},
-      { headers: this.httpHeaders }
-    );
+    const response = await this.http
+      .post<IAuthResponse>(
+        this.apiUrl + 'auth',
+        {},
+        { headers: this.httpHeaders }
+      )
+      .toPromise();
 
-    response$.subscribe((res) => {
-      this.setToken(res.token);
-    });
+    if (response) this.setToken(response.token);
 
-    return response$;
+    return response;
   }
 
   public deauth(): void {

@@ -1,0 +1,20 @@
+<div class="top">
+  <div class="green-bg" [style.width.%]="getGreenBgWidth()"></div>
+  <div class="red-bg" [style.width.%]="getRedBgWidth()"></div>
+</div>
+
+<div class="inner-container">
+  <h3>{{ name }}</h3>
+
+  <div class="answers-count">
+    <h3 class="green">
+      {{ getCountCorrectAnswers() }}
+    </h3>
+    <h3>&nbsp;/&nbsp;</h3>
+    <h3 class="red">{{ getCountBadAnswers() }}</h3>
+    <h3>&nbsp;/&nbsp;</h3>
+    <h3 class="grey">
+      {{ questionsCount - (getCountCorrectAnswers() + getCountBadAnswers()) }}
+    </h3>
+  </div>
+</div>

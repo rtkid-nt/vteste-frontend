@@ -41,12 +41,15 @@ export class TestsComponent implements OnInit {
   startTest(testId: string, testIndex: number): void {
     this.testService.startTest(testId, testIndex);
 
+    console.log('============================');
+
     const test = this.testService.getTests()[testIndex];
     this.monitoringService.addMonitoringTests({
       testCode: test.code,
       testId: test.id,
       countQuestions: test.questions.length,
       testName: test.name,
+      students: [],
     });
   }
 }
