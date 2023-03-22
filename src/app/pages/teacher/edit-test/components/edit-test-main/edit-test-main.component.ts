@@ -17,42 +17,8 @@ class ImageSnippet {
 export class EditTestMainComponent {
   constructor(private imageService: ImageService) {}
 
-  selectedFile?: ImageSnippet;
-
-  private onSuccess(): void {
-    if (this.selectedFile) {
-      this.selectedFile.pending = false;
-      this.selectedFile.status = 'ok';
-    }
-  }
-
-  private onError(): void {
-    if (this.selectedFile) {
-      this.selectedFile.pending = false;
-      this.selectedFile.status = 'fail';
-      this.selectedFile.src = '';
-    }
-  }
-
-  onSelectFile(imageInput: any): void {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', (event: any) => {
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-      this.selectedFile.pending = true;
-
-      this.imageService.uploadImage(this.selectedFile.file)
-        ? this.onSuccess()
-        : this.onError();
-    });
-
-    reader.readAsDataURL(file);
-  }
-
   onRemoveFile(event: Event): void {
     event.stopPropagation();
-    this.selectedFile = undefined;
   }
 
   @Input() test!: IEditTest;
@@ -72,8 +38,17 @@ export class EditTestMainComponent {
       : '';
   }
 
+  getDayErrorMessage(): string {
+    if (this.test.day.hasError('required'))
+      return 'Вы не ввели количество дней до завершения теста';
+
+    return this.test.time.hasError('pattern') ? 'Введите число от 1 до 10' : '';
+  }
+
   isInvalid(): boolean {
-    return this.test.name.invalid || this.test.time.invalid;
+    return (
+      this.test.name.invalid || this.test.time.invalid || this.test.day.invalid
+    );
   }
 
   @Output() completedEvent = new EventEmitter<boolean>();

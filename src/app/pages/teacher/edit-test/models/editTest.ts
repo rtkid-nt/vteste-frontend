@@ -7,6 +7,7 @@ export interface IEditTest {
   description: string;
   questions: Array<IEditQuestion>;
   time: FormControl<string | null>;
+  day: FormControl<string | null>;
   correctAnswersCountMark_5: number;
   correctAnswersCountMark_4: number;
   correctAnswersCountMark_3: number;

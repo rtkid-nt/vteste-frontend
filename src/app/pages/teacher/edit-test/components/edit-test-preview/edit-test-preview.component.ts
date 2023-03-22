@@ -23,6 +23,7 @@ export class EditTestPreviewComponent implements OnInit {
       name: this.editTest.name.value!,
       description: this.editTest.description,
       time: this.editTest.time.value!,
+      day: this.editTest.day.value!,
       correctAnswersCountMark_5: this.editTest.correctAnswersCountMark_5,
       correctAnswersCountMark_4: this.editTest.correctAnswersCountMark_4,
       correctAnswersCountMark_3: this.editTest.correctAnswersCountMark_3,

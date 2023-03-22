@@ -35,6 +35,7 @@ export class TestService {
       description: '',
       questions: [],
       time: '0',
+      day: '0',
       correctAnswersCountMark_5: 0,
       correctAnswersCountMark_4: 0,
       correctAnswersCountMark_3: 0,
@@ -53,6 +54,7 @@ export class TestService {
     test.name = editTest.name.value!;
     test.description = editTest.description;
     test.time = editTest.time.value!;
+    test.day = editTest.day.value!;
     test.correctAnswersCountMark_5 = editTest.correctAnswersCountMark_5;
     test.correctAnswersCountMark_4 = editTest.correctAnswersCountMark_4;
     test.correctAnswersCountMark_3 = editTest.correctAnswersCountMark_3;

@@ -23,8 +23,6 @@ export class MonitoringService {
       .fromEvent<IRegisterStudent>('registerStudentToClient')
       .subscribe((registerStudent: IRegisterStudent) => {
         const monitoringTest = this.monitoringTests.find((t) => {
-          console.log(registerStudent.testCode === t.testCode);
-
           return t.testCode === registerStudent.testCode;
         });
 

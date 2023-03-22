@@ -42,6 +42,7 @@ export class EditTestService {
           }
       ),
       time: new FormControl<string>(test.time, Validators.required),
+      day: new FormControl<string>(test.day, Validators.required),
     };
   }
 }

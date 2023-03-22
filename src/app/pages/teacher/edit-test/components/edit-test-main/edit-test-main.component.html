@@ -34,6 +34,21 @@
   </mat-form-field>
 </div>
 
+<div class="form-field-container">
+  <mat-label>Количество дней до завершения теста</mat-label>
+
+  <mat-form-field appearance="outline">
+    <input
+      matInput
+      placeholder="Количество дней"
+      pattern="^[1-9][0-9]?$|^10$"
+      [formControl]="test.day"
+      required
+    />
+    <mat-error *ngIf="test.day.invalid">{{ getDayErrorMessage() }}</mat-error>
+  </mat-form-field>
+</div>
+
 <button
   class="next-btn"
   mat-raised-button

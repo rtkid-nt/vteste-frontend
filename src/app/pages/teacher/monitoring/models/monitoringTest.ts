@@ -9,4 +9,5 @@ export interface IMonitoringTest {
   testName: string;
   students?: IStudent[];
   countQuestions: number;
+  isEnded: boolean;
 }
