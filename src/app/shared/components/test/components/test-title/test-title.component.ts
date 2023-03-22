@@ -34,11 +34,13 @@ export class TestTitleComponent {
   }
 
   getTime(): string {
-    const minutes: number = Math.trunc(this.timeLeftSeconds / 60);
-    let seconds: string = String(this.timeLeftSeconds - minutes * 60);
-    if (seconds.length === 1) {
-      seconds = '0' + seconds;
-    }
+    const min: number = Math.trunc(this.timeLeftSeconds / 60);
+
+    let minutes: string = String(min);
+    if (minutes.length === 1) minutes = '0' + minutes;
+
+    let seconds: string = String(this.timeLeftSeconds - min * 60);
+    if (seconds.length === 1) seconds = '0' + seconds;
 
     return `${minutes}:${seconds}`;
   }
