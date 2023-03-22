@@ -16,10 +16,11 @@ import { StudentModule } from './pages/student/student.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { HomePageComponent } from './pages/home-page/home-page/home-page.component';
 const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, NotFoundPageComponent, AuthPageComponent],
+  declarations: [AppComponent, NotFoundPageComponent, AuthPageComponent, HomePageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

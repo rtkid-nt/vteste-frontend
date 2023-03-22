@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.btn-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10rem;
+}
+
+mat-icon {
+  scale: 10;
+}
+
+a {
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10rem;
+}
+
+.auth-btn {
+  width: 100%;
+  font-size: 19px;
+  font-weight: bold;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}

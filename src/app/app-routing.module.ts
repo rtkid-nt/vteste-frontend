@@ -8,11 +8,12 @@ import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 import { EditTestComponent } from './pages/teacher/edit-test/edit-test.component';
 import { StudentComponent } from './pages/student/student.component';
 import { IsAuthGuard } from './shared/guards/is-auth.guard';
+import { HomePageComponent } from './pages/home-page/home-page/home-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    component: HomePageComponent,
     pathMatch: 'full',
   },
   {
